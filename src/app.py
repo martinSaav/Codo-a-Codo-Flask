@@ -11,14 +11,14 @@ app.config['MYSQL_DATABASE_DB'] = 'empleados'
 
 mysql.init_app(app)
 
-@app.route('/') #index
+@app.route('/') #index  (, methods=["GET"])
 def index():
-    conn = mysql.connect()
-    cursor = conn.cursor()
+    connection = mysql.connect()
+    cursor = connection.cursor()
     sql = "insert into empleados (nombre, correo, foto) values \
     ('Juan', 'juan@hotmail.com', 'fotodejuan.jpg');"
     cursor.execute(sql)
-    conn.commit()
+    connection.commit()
     return render_template('empleados/index.html')
 
 if __name__ == '__main__':
