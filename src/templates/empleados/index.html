@@ -1,23 +1,27 @@
 {% include 'header.html' %}
-    <h1>Hola flask</h1>
-    <table>
-        <thead>
+<h1>Hola flask</h1>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre:</th>
+            <th>Correo:</th>
+            <th>Foto:</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleados %}
             <tr>
-                <th>#</th>
-                <th>Nombre:</th>
-                <th>Correo:</th>
-                <th>Foto:</th>
+                <td>{{empleado[0]}}</td>
+                <td>{{empleado[1]}}</td>
+                <td>{{empleado[2]}}</td>
+                <td>{{empleado[3]}}</td>
+                <td>
+                    <a href="/modify/{{empleado[0]}}">Editar</a>
+                    <a href="/delete/{{empleado[0]}}">Borrar</a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            {% for empleado in empleados %}
-                <tr>
-                    <td>{{empleado[0]}}</td>
-                    <td>{{empleado[1]}}</td>
-                    <td>{{empleado[2]}}</td>
-                    <td>{{empleado[3]}}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        {% endfor %}
+    </tbody>
+</table>
 {% include 'footer.html' %}
