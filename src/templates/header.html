@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="{{url_for('static', filename='index.js')}}" defer></script>
     <title>Sistema Empleados</title>
 </head>
 <body>
@@ -15,8 +17,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="{{url_for('index')}}">Empleados <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="{{url_for('create')}}">Alta empleado</a>
+            <a class="nav-item nav-link active" href="{{url_for('index')}}">Empleados<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="{{url_for('alta_empleado')}}">Alta empleado</a>
           </div>
         </div>
       </nav>
