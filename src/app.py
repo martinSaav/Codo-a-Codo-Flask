@@ -10,7 +10,7 @@ mysql = MySQL()
 #regalado
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'mtd010202'
+app.config['MYSQL_DATABASE_PASSWORD'] = '123'
 app.config['MYSQL_DATABASE_DB'] = 'empleados'
 app.config['SECRET_KEY'] = "codoacodo"
 
