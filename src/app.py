@@ -3,18 +3,20 @@ from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 from datetime import datetime
 import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 mysql = MySQL()
 
-#regalado
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '123'
-app.config['MYSQL_DATABASE_DB'] = 'empleados'
-app.config['SECRET_KEY'] = "codoacodo"
+load_dotenv()
 
-UPLOADS = os.path.join('src/uploads')#guardamos la ruta como valor en la app
+app.config['MYSQL_DATABASE_HOST'] = os.getenv('MYSQL_DATABASE_HOST')
+app.config['MYSQL_DATABASE_USER'] = os.getenv('MYSQL_DATABASE_USER')
+app.config['MYSQL_DATABASE_PASSWORD'] = os.getenv('MYSQL_DATABASE_PASSWORD')
+app.config['MYSQL_DATABASE_DB'] = os.getenv('MYSQL_DATABASE_DB')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+
+UPLOADS = os.path.join('src/uploads') #guardamos la ruta como valor en la app
 app.config['UPLOADS'] = UPLOADS
 
 mysql.init_app(app)
@@ -61,11 +63,11 @@ def alta_empleado():
         tiempo = now.strftime("%Y%H%M%S")
 
         if (_foto.filename != ''):
-            nuevoNombreFoto = tiempo + '_' + _foto.filename
-            _foto.save("src/uploads/" + nuevoNombreFoto)
+            nuevo_nombreFoto = tiempo + '_' + _foto.filename
+            _foto.save("src/uploads/" + nuevo_nombreFoto)
 
         sql = "INSERT INTO empleados (nombre, correo, foto) values (%s, %s, %s);"
-        datos = (_nombre, _correo, nuevoNombreFoto)
+        datos = (_nombre, _correo, nuevo_nombreFoto)
 
         query_my_sql(sql, datos)
         return redirect('/')
