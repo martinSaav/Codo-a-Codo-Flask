@@ -12,8 +12,10 @@
 - MarkupSafe==2.1.1
 - pycparser==2.21
 - PyMySQL==1.0.2
+- python-decouple==3.6
+- python-dotenv==0.20.0
 - Werkzeug==2.1.2
 
 ## Instalacion
 
-_A completar.
+pip install -r requirements.txt 
